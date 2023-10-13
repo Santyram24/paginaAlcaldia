@@ -22,7 +22,7 @@ color: black;
 
 .fondo2{
     background-color: blue;
-    height: 650px;
+    height: 100%;
     
     color: black;  
 }
@@ -127,6 +127,8 @@ color: black;
 #Foto{
     width: 400px;
     height: 400px;
+    margin-bottom:200px;
     margin-left: 470px;
     border-radius: 20px;
+    
 }
