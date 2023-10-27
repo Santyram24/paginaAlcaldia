@@ -1,7 +1,7 @@
 import mysql.connector
 
 try:
-    # conexion base Cristian G
+    # conexion base Cristian Gonzalez
     conexion = mysql.connector.connect(
         host="localhost",
         user="root",
