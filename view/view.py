@@ -1,3 +1,6 @@
+
+import tkinter as tk
+from tkinter import ttk
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QPushButton, QVBoxLayout, QWidget
 from PyQt5.QtGui import QFont  # Importa QFont
