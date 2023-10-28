@@ -1,3 +1,4 @@
 Usuario: cristian, ContraseÃ±a: admin
 Usuario: sergio, Contraseña: 13574
 Usuario: andress, Contraseña: 12435
+Usuario: jorge, ContraseÃ±a: david
