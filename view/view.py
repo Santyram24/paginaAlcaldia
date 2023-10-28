@@ -1,96 +1,83 @@
-import tkinter as tk
-from tkinter import ttk
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QPushButton, QVBoxLayout, QWidget
-from PyQt5.QtGui import QFont  # Importa QFont
-from PyQt5.QtCore import Qt  # Importa Qt
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QLineEdit, QPushButton, QVBoxLayout,QFrame, QWidget,QSplitter
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QLineEdit, QPushButton, QVBoxLayout, QWidget
+from model.user_model import User
+from model.reconocimiento_model import RecognitionLog
+from services.reconocimiento_facial import capture_facial_image
 
+class RegistrationApp(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.init_ui()
 
-def signup():
-    # Agrega aquí la lógica para el registro facial
-    print("Registro Facial")
+    def init_ui(self):
+        self.setWindowTitle("Registro de Reconocimiento Facial")
+        self.setGeometry(100, 100, 600, 300)
 
-def login():
-    # Agrega aquí la lógica para el inicio de sesión
-    print("Inicio de Sesión")
+        # Configura el fondo azul utilizando una hoja de estilo
+        style = "QMainWindow { background: #3498db; }"
+        self.setStyleSheet(style)
 
-def pantalla_principal():
-    app = QApplication(sys.argv)
-    ventana = QMainWindow()
-    ventana.setWindowTitle("Registro")
-    ventana.setGeometry(100, 100, 1000, 600)  # Aumenta el ancho de la ventana
+        central_widget = QWidget(self)
+        self.setCentralWidget(central_widget)
 
-    layout = QVBoxLayout()
+        layout = QVBoxLayout()
 
-    left_widget = QWidget()  # Widget contenedor para el grupo de registro
-    left_layout = QVBoxLayout(left_widget)
-    usuario_label = QLabel("Usuario *")
-    usuario_entrada = QLineEdit()
-    usuario_label.setBuddy(usuario_entrada)
+        username_label = QLabel("Nombre de Usuario")
+        self.username_input = QLineEdit()
+        password_label = QLabel("Contraseña")
+        self.password_input = QLineEdit()
+        self.password_input.setEchoMode(QLineEdit.Password)
 
-    contra_label = QLabel("Contraseña *")
-    contra_entrada = QLineEdit()
-    contra_label.setBuddy(contra_entrada)
+        register_button = QPushButton("Registrar")
+        register_button.clicked.connect(self.register_user)
 
-    boton_registro_facial = QPushButton("Registro Facial")
-    boton_registro_facial.setStyleSheet("background-color: #3498db; color: white; border-radius: 5px; height: 50px;")
-    boton_registro_facial.clicked.connect(signup)
+        layout.addWidget(username_label)
+        layout.addWidget(self.username_input)
+        layout.addWidget(password_label)
+        layout.addWidget(self.password_input)
+        layout.addWidget(register_button)
 
-    left_layout.addWidget(QLabel("Registro facial: debe asignar un usuario y contraseña:"))
-    left_layout.addWidget(usuario_label)
-    left_layout.addWidget(usuario_entrada)
-    left_layout.addWidget(contra_label)
-    left_layout.addWidget(contra_entrada)
-    left_layout.addWidget(boton_registro_facial)
+        central_widget.setLayout(layout)
 
-    right_widget = QWidget()  # Widget contenedor para el grupo de inicio de sesión
-    right_layout = QVBoxLayout(right_widget)
-    usuariologueo_label = QLabel("Usuario *")
-    usuariologueo_entrada = QLineEdit()
-    usuariologueo_label.setBuddy(usuariologueo_entrada)
+    def register_user(self):
+        username = self.username_input.text()
+        password = self.password_input.text()
 
-    contralogueo_label = QLabel("Contraseña *")
-    contralogueo_entrada = QLineEdit()
-    contralogueo_label.setBuddy(contralogueo_entrada)
+        if not username or not password:
+            return  # Validación de entrada
 
-    boton_logueo = QPushButton("Inicio de Sesión")
-    boton_logueo.setStyleSheet("background-color: #27ae60; color: white; border-radius: 5px; height: 50px;")
-    boton_logueo.clicked.connect(login)
+        user = User(username, password)
+        self.save_user_data(user)
+        self.capture_and_save_facial_image(username)
 
-    right_layout.addWidget(QLabel("Inicio de sesion:"))
-    right_layout.addWidget(usuariologueo_label)
-    right_layout.addWidget(usuariologueo_entrada)
-    right_layout.addWidget(contralogueo_label)
-    right_layout.addWidget(contralogueo_entrada)
-    right_layout.addWidget(boton_logueo)
+    def save_user_data(self, user):
+        # Obtén los datos del usuario
+        username = user.username
+        password = user.password
+    
+        # Define la ruta del archivo donde se guardarán los datos de usuario
+        user_data_file = "user_data.txt"
 
+        # Abre el archivo en modo escritura (se creará si no existe)
+        with open(user_data_file, "a") as file:
+            # Escribe los datos del usuario en el archivo
+            file.write(f"Usuario: {username}, Contraseña: {password}\n")
 
+    def capture_and_save_facial_image(self, username):
+        image_path = capture_facial_image()  # Utiliza la función de captura de imágenes del servicio facial_recognition_service
+        if image_path:
+            recognition_log = RecognitionLog(username, image_path)
+            self.save_recognition_log(recognition_log)
 
-    # Utiliza un QFrame como separador
-    separator = QFrame()
-    separator.setFrameShape(QFrame.VLine)  # Separador vertical
-    separator.setFrameShadow(QFrame.Sunken)
+    def save_recognition_log(self, recognition_log):
+        # Obtén los datos del registro de reconocimiento
+        username = recognition_log.username
+        image_path = recognition_log.image_path
+    
+        # Define la ruta del archivo donde se guardarán los registros de reconocimiento
+        recognition_log_file = "recognition_log.txt"
 
-    # Utiliza un QSplitter para la separación horizontal
-    splitter = QSplitter()
-    splitter.addWidget(left_widget)
-    splitter.addWidget(separator)  # Agrega el separador
-    splitter.addWidget(right_widget)
-    left_widget.setMinimumWidth(200)
-    right_widget.setMinimumWidth(200)
-
-
-    layout.addWidget(splitter)
-    # Ajusta los tamaños iniciales de los widgets (izquierda, separador, derecha)
-    splitter.setSizes([1, 1, 1])
-
-
-    central_widget = QWidget()
-    central_widget.setLayout(layout)
-    ventana.setCentralWidget(central_widget)
-
-    ventana.show()
-    sys.exit(app.exec_())
-
-pantalla_principal()
+        # Abre el archivo en modo escritura (se creará si no existe)
+        with open(recognition_log_file, "a") as file:
+            # Escribe los datos del registro de reconocimiento en el archivo
+            file.write(f"Usuario: {username}, Ruta de la imagen: {image_path}\n")
