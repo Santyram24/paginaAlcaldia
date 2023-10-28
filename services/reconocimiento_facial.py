@@ -10,7 +10,7 @@ def capture_facial_image():
 
     # Comprueba si la captura fue exitosa
     if ret:
-        image_path = "captured_images/user_image.jpg"  # Ruta donde se guardará la imagen
+        image_path = "C:/Users/crist/OneDrive/Documents/GitHub/paginaAlcaldia/DataBase/face"  # Ruta donde se guardará la imagen
         cv2.imwrite(image_path, frame)
         return image_path
     else:
