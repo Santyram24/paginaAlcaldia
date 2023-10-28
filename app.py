@@ -1,2 +1,2 @@
-import view.py
+from view import view
 
