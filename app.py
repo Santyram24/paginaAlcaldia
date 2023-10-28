@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QApplication
+from PyQt5.QtWidgets import QApplication 
 from view.view import RegistrationApp
 
 
@@ -11,5 +11,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-    
-    # interfaz y funcionalidad

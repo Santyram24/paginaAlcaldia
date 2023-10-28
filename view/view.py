@@ -81,3 +81,4 @@ class RegistrationApp(QMainWindow):
         with open(recognition_log_file, "a") as file:
             # Escribe los datos del registro de reconocimiento en el archivo
             file.write(f"Usuario: {username}, Ruta de la imagen: {image_path}\n")
+
