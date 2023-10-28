@@ -1,7 +1,1 @@
 Usuario: cristian, Contraseña: admin
-Usuario: cristian, Contraseña: admin
-Usuario: cristian 1 , Contraseña: admin
-Usuario: cr, Contraseña: as
-Usuario: cr, Contraseña: as
-Usuario: cr, Contraseña: 123
-Usuario: aada, Contraseña: dawda
