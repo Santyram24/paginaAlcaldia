@@ -3,3 +3,5 @@ Usuario: cristian, Ruta de la imagen: captured_images/user_image.jpg
 Usuario: cristian 1 , Ruta de la imagen: captured_images/user_image.jpg
 Usuario: cr, Ruta de la imagen: captured_images/user_image.jpg
 Usuario: cr, Ruta de la imagen: captured_images/user_image.jpg
+Usuario: sergio, Ruta de la imagen: captured_images/user_image.jpg
+Usuario: andress, Ruta de la imagen: captured_images/user_image.jpg
