@@ -1,9 +1,43 @@
-class RecognitionLog:
-    def __init__(self, id, id_persona, fecha_hora_entrada, fecha_hora_salida, id_sistema_reconocimiento):
-        self.id = id
-        self.id_persona = id_persona
-        self.fecha_hora_entrada = fecha_hora_entrada
-        self.fecha_hora_salida = fecha_hora_salida
-        self.id_sistema_reconocimiento = id_sistema_reconocimiento
+import cv2
+import os
 
-# Puedes agregar métodos adicionales según tus necesidades.
+def capture_facial_image():
+    # Configura la cámara
+    cap = cv2.VideoCapture(0)
+
+    # Captura un fotograma
+    ret, frame = cap.read()
+
+    # Comprueba si la captura fue exitosa
+    if ret:
+        image_path = "captured_images/user_image.jpg"  # Ruta donde se guardará la imagen
+        cv2.imwrite(image_path, frame)
+        return image_path
+    else:
+        return None
+    
+def compare_facial_images(image_path1, image_path2):
+    # Carga las imágenes desde los archivos
+    image1 = cv2.imread(image_path1)
+    image2 = cv2.imread(image_path2)
+
+    if image1 is None or image2 is None:
+        return False  # No se pudieron cargar las imágenes
+
+    # Convierte las imágenes a escala de grises para la comparación
+    gray_image1 = cv2.cvtColor(image1, cv2.COLOR_BGR2GRAY)
+    gray_image2 = cv2.cvtColor(image2, cv2.COLOR_BGR2GRAY)
+
+    # Realiza la comparación de imágenes utilizando el algoritmo de coincidencia
+    # Puedes ajustar los parámetros según tus necesidades
+    # En este ejemplo, se utiliza el algoritmo TM_CCOEFF_NORMED
+    result = cv2.matchTemplate(gray_image1, gray_image2, cv2.TM_CCOEFF_NORMED)
+
+    # Define un umbral de similitud, puedes ajustar este valor según tus necesidades
+    similarity_threshold = 0.8
+
+    # Compara el resultado con el umbral de similitud
+    if cv2.minMaxLoc(result)[1] >= similarity_threshold:
+        return True  # Las imágenes son similares
+    else:
+        return False  # Las imágenes no son lo suficientemente similares
