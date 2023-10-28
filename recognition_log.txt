@@ -5,3 +5,4 @@ Usuario: cr, Ruta de la imagen: captured_images/user_image.jpg
 Usuario: cr, Ruta de la imagen: captured_images/user_image.jpg
 Usuario: sergio, Ruta de la imagen: captured_images/user_image.jpg
 Usuario: andress, Ruta de la imagen: captured_images/user_image.jpg
+Usuario: jorge, Ruta de la imagen: captured_images/user_image.jpg
