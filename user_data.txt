@@ -2,3 +2,14 @@ Usuario: cristian, ContraseÃ±a: admin
 Usuario: sergio, Contraseña: 13574
 Usuario: andress, Contraseña: 12435
 Usuario: jorge, ContraseÃ±a: david
+Usuario: santiago, Contraseña: 4875
+Usuario: carlos, Contraseña: 2314
+Usuario: adrian, Contraseña: 09876
+Usuario: jorge, Contraseña: 08769
+Usuario: fabian, Contraseña: 08769256
+Usuario: brandon, Contraseña: 246537
+Usuario: mateo, Contraseña: 46875
+Usuario: mateo, Contraseña: 46875
+Usuario: mateo, Contraseña: 46875
+Usuario: aa, Contraseña: 222
+Usuario: bb, Contraseña: 222
