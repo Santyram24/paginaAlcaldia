@@ -1,8 +1,10 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QLineEdit, QPushButton, QVBoxLayout, QWidget
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QLineEdit, QPushButton, QVBoxLayout, QWidget,QHBoxLayout
 from model.user_model import User
 from model.reconocimiento_model import RecognitionLog
 from services.reconocimiento_facial import capture_facial_image
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QPixmap
 
 class RegistrationApp(QMainWindow):
     def __init__(self):
@@ -14,7 +16,32 @@ class RegistrationApp(QMainWindow):
         self.setGeometry(100, 100, 600, 300)
 
         # Configura el fondo azul utilizando una hoja de estilo
-        style = "QMainWindow { background: #3498db; }"
+        style = """
+            QMainWindow {
+                background-color: #3498db;
+            }
+            
+            QLabel {
+                color: white;
+                
+            }
+           
+            QPushButton {
+                background-color: #27ae60;
+                color: white;
+                border: 2px solid #27ae60;
+                border-radius: 5px;
+                height: 40px;
+                
+            }
+            QLineEdit {
+                border: 2px solid #3498db;
+                border-radius: 5px;
+                height: 40px;
+            }
+
+           
+        """
         self.setStyleSheet(style)
 
         central_widget = QWidget(self)
@@ -31,6 +58,21 @@ class RegistrationApp(QMainWindow):
         register_button = QPushButton("Registrar")
         register_button.clicked.connect(self.register_user)
 
+
+        # Crear un QLabel para la imagen
+        image_label = QLabel(self)
+        
+        pixmap = QPixmap('view\img\Granada.jpg')  
+        pixmap = pixmap.scaled(100, 120, Qt.KeepAspectRatio)  # Redimensionar la imagen
+        image_label.setPixmap(pixmap)
+        
+
+      # Crear un layout horizontal para la imagen
+        image_layout = QHBoxLayout()
+        image_layout.addStretch(1)  # Espacio en blanco a la izquierda de la imagen
+        image_layout.addWidget(image_label)  # Agregar la imagen
+        image_layout.addStretch(1)  # Espacio en blanco a la derecha de la imagen
+        
         layout.addWidget(username_label)
         layout.addWidget(self.username_input)
         layout.addWidget(password_label)
@@ -38,6 +80,9 @@ class RegistrationApp(QMainWindow):
         layout.addWidget(register_button)
 
         central_widget.setLayout(layout)
+        
+        # Agregar el QLabel de la imagen a la ventana
+        self.setMenuWidget(image_label)
 
     def register_user(self):
         username = self.username_input.text()
