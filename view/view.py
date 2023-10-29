@@ -49,6 +49,7 @@ class RegistrationApp(QMainWindow):
         user = User(username, password)
         self.save_user_data(user)
         self.capture_and_save_facial_image(username)
+        return username
 
     def save_user_data(self, user):
         # Obtén los datos del usuario
@@ -81,4 +82,5 @@ class RegistrationApp(QMainWindow):
         with open(recognition_log_file, "a") as file:
             # Escribe los datos del registro de reconocimiento en el archivo
             file.write(f"Usuario: {username}, Ruta de la imagen: {image_path}\n")
+        
 
