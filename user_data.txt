@@ -13,3 +13,5 @@ Usuario: mateo, Contraseña: 46875
 Usuario: mateo, Contraseña: 46875
 Usuario: aa, Contraseña: 222
 Usuario: bb, Contraseña: 222
+Usuario: Cristian , ContraseÃ±a: admin
+Usuario: Cristian 2, ContraseÃ±a: admin1
