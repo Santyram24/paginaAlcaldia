@@ -15,3 +15,6 @@ Usuario: aa, Contraseña: 222
 Usuario: bb, Contraseña: 222
 Usuario: Cristian , ContraseÃ±a: admin
 Usuario: Cristian 2, ContraseÃ±a: admin1
+Usuario: Adrian Patroclo , Contraseña: patrolo123
+Usuario: Adrian Patroclo , Contraseña: patrolo123
+Usuario: Adrian Patroclo , Contraseña: patrolo123
