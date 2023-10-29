@@ -1,7 +1,15 @@
 import cv2
 import os
 
+
+
+
 def capture_facial_image():
+    nombre_base = "captured_images/imagen"
+    extension = ".jpg"
+    contador = 1
+    
+    
     # Configura la cámara
     cap = cv2.VideoCapture(0)
 
@@ -9,12 +17,22 @@ def capture_facial_image():
     ret, frame = cap.read()
 
     # Comprueba si la captura fue exitosa
-    if ret:
-        image_path = 'captured_images/user_image.jpg'  # Ruta donde se guardará la imagen
-        cv2.imwrite(image_path, frame)
-        return image_path
-    else:
-        return None
+    
+    while True:
+        nombre_archivo = f"{nombre_base}{contador}{extension}"
+    
+        if not os.path.exists(nombre_archivo):
+        # Verificar si el nombre de archivo ya existe en el directorio
+            with open(nombre_archivo, "w") as archivo:
+                if ret:
+                    image_path = f"{nombre_base}{contador}{extension}" # Ruta donde se guardará la imagen
+                    cv2.imwrite(image_path, frame)
+                else:
+                    return None
+            break  # Salir del bucle una vez que se haya creado el archivo
+        else:
+            contador += 1
+ 
     
 def compare_facial_images(image_path1, image_path2):
     # Carga las imágenes desde los archivos
