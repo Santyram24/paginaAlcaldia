@@ -22,3 +22,6 @@ Usuario: Adrian Patroclo , Contraseï¿½a: patrolo123
 Usuario: aaaa, Contraseña: aaaa
 Usuario: aaaa, Contraseña: aaaa
 Usuario: Jorge, Contraseña: aaaa
+Usuario: sergiooolix, Contraseña: 2804030sE
+Usuario: sergioo, Contraseña: 12233
+Usuario: Sergio Ortiz, Contraseña: 123456
