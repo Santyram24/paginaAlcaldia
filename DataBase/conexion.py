@@ -6,7 +6,7 @@ try:
         host="localhost",
         user="root",
         password="admin",
-        database="alcaldiareconfacial_db"
+        database="usuarios"
     )
 
     print("Conexión exitosa a la base de datos.")
