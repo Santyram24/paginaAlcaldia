@@ -1,19 +1,37 @@
 from tkinter import  Tk, Button, Entry, Label, ttk, PhotoImage
 from tkinter import  StringVar,END,HORIZONTAL,Frame,Toplevel
-import controller.controller
+ 
 
 import time
 
 
 
 class Login(Frame):
+
+	def check_login():
+    username = username.get()
+    password = password.get()
+
+    # Leer el archivo .txt
+    with open('user_data.txt', 'r') as file:
+        lines = file.readlines()
+
+    # Verificar si el usuario ingresado existe en el archivo
+    for line in lines:
+        data = line.split()
+        if data[0] == username and data[1] == password:
+            result.set("Usuario encontrado")
+            return
+
+    result.set("Usuario no encontrado")
+
 	def __init__(self, master, *args):
 		super().__init__( master,*args)
 		self.user_marcar = "Ingrese su correo"
 		self.contra_marcar = "Ingrese su contraseña"
 		self.fila1  = ''
 		self.fila2 = ''
-		self.datos = controller.controller.recognition_logs
+		# self.datos = controller.controller.recognition_logs
 		self.widgets()
 	def entry_out(self, event, event_text):
 		if event['fg'] == 'black' and len(event.get()) ==0:
@@ -95,8 +113,8 @@ class Login(Frame):
 				self.indica2['text'] = 'Contraseña incorrecta'
 
 	def widgets(self):
-		self.logo = PhotoImage(file ='logo.jpg')
-		Label(self.master, image= self.logo, bg='DarkOrchid1',height=150, width=150).pack()
+		# self.logo = PhotoImage(file ='logo.jpg')
+		# Label(self.master, image= self.logo, bg='DarkOrchid1',height=150, width=150).pack()
 		Label(self.master, text= 'Usuario', bg='DarkOrchid1', fg= 'black', font= ('Lucida Sans', 16, 'bold')).pack(pady=5)
 		self.entry1 = Entry(self.master, font=('Comic Sans MS', 12),justify = 'center', fg='grey',highlightbackground = "#E65561", 
 			highlightcolor= "green2", highlightthickness=5)
