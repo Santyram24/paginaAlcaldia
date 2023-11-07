@@ -122,7 +122,7 @@ class RegistrationApp(QMainWindow):
 
         
     def train_model(self):
-        data_path = 'C:/Users/jddur/OneDrive/Desktop/FOTOS RECON'  # Ruta de tus datos de entrenamiento
+        data_path = 'FotosR'  # Ruta de tus datos de entrenamiento
         model_path = 'modeloLBPHFace.xml'  # Ruta donde se guardará el modelo entrenado
 
     # Llama a la función de entrenamiento desde model.training
@@ -167,7 +167,7 @@ class RegistrationApp(QMainWindow):
 
     def capture_and_save_facial_image(self, username):
         personName = username
-        dataPath = 'C:/Users/jddur/OneDrive/Desktop/FOTOS RECON' 
+        dataPath = 'FotosR' 
         personPath = dataPath + '/' + personName
 
         if not os.path.exists(personPath):
@@ -215,7 +215,7 @@ class RegistrationApp(QMainWindow):
         username = self.auth_username_input.text()
         password = self.auth_password_input.text()
         
-        dataPath = 'C:/Users/jddur/OneDrive/Desktop/FOTOS RECON'
+        dataPath = 'FotosR'
         imagePaths = os.listdir(dataPath)
         print('imagePaths=',imagePaths)
         cap = cv2.VideoCapture(0,cv2.CAP_DSHOW)
