@@ -32,3 +32,7 @@ Usuario: jorge, Contraseña: aaaa, Rol: Funcionario
 Usuario: David, Contraseña: aaaa, Rol: Funcionario
 Usuario: David, Contraseña: aaaa, Rol: Funcionario
 Usuario: juan Pablo, Contraseña: 12345, Rol: Cliente
+Usuario: cn, ContraseÃ±a: 246, Rol: Cliente
+Usuario: cn, ContraseÃ±a: 246, Rol: Cliente
+Usuario: sal, ContraseÃ±a: 1234, Rol: Cliente
+Usuario: alex, ContraseÃ±a: 222111, Rol: Cliente
