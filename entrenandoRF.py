@@ -2,7 +2,7 @@ import cv2
 import os
 import numpy as np
 
-dataPath = 'C:/Users/Sergio/Desktop/Reconocimiento Facial/Data' 
+dataPath = 'C:/Users/jddur/OneDrive/Desktop/FOTOS RECON' 
 peopleList = os.listdir(dataPath)
 print('Lista de personas: ', peopleList)
 
