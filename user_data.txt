@@ -36,3 +36,4 @@ Usuario: cn, Contraseña: 246, Rol: Cliente
 Usuario: cn, Contraseña: 246, Rol: Cliente
 Usuario: sal, Contraseña: 1234, Rol: Cliente
 Usuario: alex, Contraseña: 222111, Rol: Cliente
+Usuario: Jorge, Contrase�a: 1234, Rol: Cliente
