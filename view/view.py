@@ -57,6 +57,11 @@ class RegistrationApp(QMainWindow):
         password_label = QLabel("Contraseña")
         self.password_input = QLineEdit()
         self.password_input.setEchoMode(QLineEdit.Password)
+        role_label = QLabel("Rol")
+        self.role_combo = QComboBox()
+        self.role_combo.addItem("Cliente")
+        self.role_combo.addItem("Funcionario")
+        self.role_combo.addItem("Trabajador")
 
         register_button = QPushButton("Registrar")
         register_button.clicked.connect(self.register_user)
@@ -80,11 +85,7 @@ class RegistrationApp(QMainWindow):
         layout.addWidget(self.password_input)
         
         
-        role_label = QLabel("Rol")
-        self.role_combo = QComboBox()
-        self.role_combo.addItem("Cliente")
-        self.role_combo.addItem("Funcionario")
-        self.role_combo.addItem("Trabajador")
+        
         role_layout = QVBoxLayout()
         role_layout.addWidget(role_label)
         role_layout.addWidget(self.role_combo)
