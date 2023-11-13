@@ -37,3 +37,4 @@ Usuario: cn, Contrase√±a: 246, Rol: Cliente
 Usuario: sal, Contrase√±a: 1234, Rol: Cliente
 Usuario: alex, Contrase√±a: 222111, Rol: Cliente
 Usuario: Jorge, ContraseÒa: 1234, Rol: Cliente
+Usuario: Adrian Alonso, ContraseÒa: 123456, Rol: Funcionario
